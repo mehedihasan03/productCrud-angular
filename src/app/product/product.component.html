@@ -1,0 +1,63 @@
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1><u>===Product Repository===</u></h1>
+            <form class="mt-4" #form='ngForm' (ngSubmit)="isSave? saveProduct(form):updateProduct()">
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input class="form-control" type="text" [(ngModel)]="product.name" name="name" id="name"></td>
+                    </tr>
+                    <tr>
+                        <td>Quantity:</td>
+                        <td><input class="form-control" type="number" [(ngModel)]="product.quantity" name="quantity" id="quantity"></td>
+                    </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td><input class="form-control" type="number" [(ngModel)]="product.price" name="price" id="price"></td>
+                    </tr>
+                    <tr>
+                        <td>Remarks:</td>
+                        <td><input class="form-control" type="text" [(ngModel)]="product.remarks" name="remarks" id="remarks"></td>
+                    </tr>
+                    <tr>
+                        <td><input class="btn btn-success mt-3" type="submit" value="{{isSave? 'Save Product' : 'Update'}}" /></td>
+                    </tr>
+
+                </table>
+            </form>
+
+            
+        </div>
+    </div>
+</div>
+<div class="container mt-3">
+    <h1><u>Product Table</u></h1>
+    <table class="table table-stripedtable table-success table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Remarks</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of Products; index as i;">
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.remarks}}</td>
+                <td>
+                    <button class="btn btn-secondary" (click)="editProduct(product)">Edit</button>
+                    ||
+                    <button class="btn btn-danger" (click)="deleteProduct(product)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
